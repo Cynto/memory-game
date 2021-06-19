@@ -5,7 +5,7 @@ function Header(props) {
   return (
     <header>
       <h1>Symbol Memory Game</h1>
-      <Scoreboard usedSymbolArray={props.usedSymbolArray}/>
+      <Scoreboard bestScore={props.bestScore} score={props.score}/>
     </header>
   )
 }

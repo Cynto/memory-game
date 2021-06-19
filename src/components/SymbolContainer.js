@@ -2,7 +2,7 @@ import React from 'react'
 
 function SymbolContainer(props) {
 
-  const { currentSymbolArray, setCurrentArray, usedSymbolArray, setUsedArray} = props
+  const { currentSymbolArray, setCurrentArray, usedSymbolArray, setUsedArray, setGameOver} = props
 
 
   const shuffle = () => {
@@ -28,9 +28,11 @@ function SymbolContainer(props) {
         <div key={item} className="symbol-item"
         onClick={() => {
           shuffle()
-          console.log(usedSymbolArray.indexOf(item))
           if(usedSymbolArray.indexOf(item) === -1) {
-          setUsedArray((oldArray) => [...oldArray, item])} }}>
+          setUsedArray((oldArray) => [...oldArray, item])}
+          else {
+            setGameOver(true)
+          } }}>
           {item}
         </div>)
       })}
