@@ -10,6 +10,7 @@ function MainContainer(props) {
         usedSymbolArray={props.usedSymbolArray}
         setUsedArray={props.setUsedArray}
         setGameOver={props.setGameOver}
+        setTotalSymbolArray={props.setTotalSymbolArray}
       />
     </div>
   );
