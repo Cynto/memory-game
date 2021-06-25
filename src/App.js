@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import MainContainer from './components/MainContainer';
 import GameOver from './components/GameOver';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
 
 function App() {
   const [totalSymbolArray, setTotalSymbolArray] = useState([]);
@@ -11,9 +11,13 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(usedSymbolArray.length);
   const [bestScore, setBestScore] = useState(0);
-  const [level, setLevel] = useState(1)
+  const [level, setLevel] = useState(1);
 
   const symbolArray = [
+    '$',
+    '+',
+    '-',
+    '=',
     '!',
     '@',
     '#',
@@ -32,20 +36,28 @@ function App() {
 
   useEffect(() => {
     if (usedSymbolArray.length === currentSymbolArray.length) {
-      setLevel(level + 1)
-      const getRandomElement = () => {
-        const randomElement =
-          symbolArray[Math.floor(Math.random() * symbolArray.length)];
-        if (currentSymbolArray.indexOf(randomElement) === -1) {
-          setCurrentArray((oldArray) => [...oldArray, randomElement]);
-        } else getRandomElement();
-      };
-      getRandomElement();
-
-      setUsedArray([]);
+      setLevel(level + 1);
+      setCurrentArray([]);
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usedSymbolArray]);
+
+  useEffect(() => {
+    const getRandomElement = () => {
+      const randomElement =
+        symbolArray[Math.floor(Math.random() * symbolArray.length)];
+      if (currentSymbolArray.indexOf(randomElement) === -1) {
+        setCurrentArray((oldArray) => [...oldArray, randomElement]);
+      } else getRandomElement();
+      setUsedArray([]);
+    };
+
+    if (currentSymbolArray.length !== level + 3) {
+      getRandomElement();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentSymbolArray]);
 
   useEffect(() => {
     setScore(totalSymbolArray.length);
