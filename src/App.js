@@ -4,12 +4,13 @@ import MainContainer from './components/MainContainer';
 import GameOver from './components/GameOver';
 
 function App() {
-  const [totalSymbolArray, setTotalSymbolArray] = useState([])
+  const [totalSymbolArray, setTotalSymbolArray] = useState([]);
   const [usedSymbolArray, setUsedArray] = useState([]);
   const [currentSymbolArray, setCurrentArray] = useState(['$', '+', '-', '=']);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(usedSymbolArray.length);
   const [bestScore, setBestScore] = useState(0);
+  const [level, setLevel] = useState(1)
 
   const symbolArray = [
     '!',
@@ -29,11 +30,8 @@ function App() {
   ];
 
   useEffect(() => {
-    console.log(usedSymbolArray);
-    
-    
-
     if (usedSymbolArray.length === currentSymbolArray.length) {
+      setLevel(level + 1)
       const getRandomElement = () => {
         const randomElement =
           symbolArray[Math.floor(Math.random() * symbolArray.length)];
@@ -50,7 +48,7 @@ function App() {
 
   useEffect(() => {
     setScore(totalSymbolArray.length);
-  }, [totalSymbolArray])
+  }, [totalSymbolArray]);
 
   useEffect(() => {
     if (score > bestScore) {
@@ -73,6 +71,7 @@ function App() {
               setUsedArray={setUsedArray}
               setGameOver={setGameOver}
               setTotalSymbolArray={setTotalSymbolArray}
+              level={level}
             />
           </div>,
         ]
@@ -86,6 +85,7 @@ function App() {
           setUsedArray={setUsedArray}
           setCurrentArray={setCurrentArray}
           setTotalSymbolArray={setTotalSymbolArray}
+          setLevel={setLevel}
         />
       )}
     </div>

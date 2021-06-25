@@ -1,7 +1,7 @@
 import React from 'react';
 
 function GameOver(props) {
-  const { setGameOver, setScore, score, setUsedArray, setCurrentArray, setTotalSymbolArray } = props;
+  const { setGameOver, setScore, score, setUsedArray, setCurrentArray, setTotalSymbolArray, setLevel } = props;
   return (
     <div className="game-over-screen">
       <div>
@@ -10,6 +10,7 @@ function GameOver(props) {
         <button
           onClick={() => {
             setGameOver(false);
+            setLevel(1)
             setScore(0)
             setUsedArray([]);
             setCurrentArray(['$', '+', '-', '='])
