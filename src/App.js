@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import MainContainer from './components/MainContainer';
 import GameOver from './components/GameOver';
+import Footer from './components/Footer'
 
 function App() {
   const [totalSymbolArray, setTotalSymbolArray] = useState([]);
@@ -62,7 +63,7 @@ function App() {
     <div className="App">
       {!gameOver ? (
         [
-          <div key={'unique'}>
+          <div className="total-container" key={'unique'}>
             <Header bestScore={bestScore} score={score} />
             <MainContainer
               currentSymbolArray={currentSymbolArray}
@@ -73,6 +74,7 @@ function App() {
               setTotalSymbolArray={setTotalSymbolArray}
               level={level}
             />
+            <Footer />
           </div>,
         ]
       ) : (
