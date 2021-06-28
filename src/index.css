@@ -58,7 +58,7 @@ header h1{
 .symbol-container {
   margin-top: 50px;
   display: flex;
-  max-width: 350px;
+  max-width: 312px;
   flex-wrap: wrap;
 }
 .symbol-item {
@@ -153,4 +153,24 @@ footer i {
 
 .right-footer i{ 
   margin-right: 10px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .title {
+    display: none
+  }
+  header {
+    display: flex;
+    justify-content: center;
+  }
+  .scoreboard {
+    margin-left: 0px;
+  }
+  .level-container {
+    width: 90%;
+  }
+  .symbol-container {
+    max-width: 312px;
+  }
 }
